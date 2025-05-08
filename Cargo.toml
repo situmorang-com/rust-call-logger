@@ -1,0 +1,9 @@
+[package]
+name = "rust-call-logger"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+eframe = "0.24"  # includes egui + a windowing backend
+chrono = "0.4"
+dirs = "4.0"
