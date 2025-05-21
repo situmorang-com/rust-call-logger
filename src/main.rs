@@ -125,6 +125,10 @@ impl App for CallLoggerApp {
             ui.horizontal(|ui| {
                 ui.label("📅 Date/Time:");
                 ui.text_edit_singleline(&mut self.date);
+                // Quick-set to current timestamp
+                if ui.button("🕒 Now").clicked() {
+                    self.date = Local::now().to_rfc3339();
+                }
             });
 
             // Categories (multi-select + add)
@@ -250,7 +254,7 @@ fn main() {
     app.projects = projs_list;
     app.log_file = logfile;
 
-    run_native(
+    let _ = run_native(
         "Call Logger",
         NativeOptions::default(),
         Box::new(move |_cc| Box::new(app)),
